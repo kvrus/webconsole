@@ -1,0 +1,12 @@
+@(message: List[Account])
+
+      <div class="alert alert-info" role="alert">
+        <h5>Результат выполнения команды</h5>
+        <p class="lead">
+<ul>
+@for(p <- message) {
+  <li><h5>@p.id  (@p.value)</h5></li>
+} 
+</ul>
+
+      </div>

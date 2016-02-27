@@ -1,0 +1,80 @@
+@(message: String)
+
+@main("Welcome to Play 2.0") {
+    
+    <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Примеры</a></li>
+            <li role="presentation"><a href="#">О сайте</a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">Волков Константин</h4>
+      </div>
+
+      </br></br>
+    
+       <input type="text" id="inputCmd" class="form-control input-lg"  placeholder="Введите команду" required autofocus>
+       
+      
+      </br></br>
+
+      <div id="spnCode">
+        <div id="headline" class="inner"></div>    
+      </div>
+
+
+
+      </br></br>
+
+      </br></br></br></br></br></br>
+
+      <footer class="footer">
+        <p>&copy; Kostya&Sveta&Baby 2015</p>
+      </footer>
+
+      <script>
+      
+      document.addEventListener('keydown', function(event) {
+      if(event.keyCode == 13) {
+        var textBox = getObject('inputCmd');
+        getJson();
+      }
+      });
+
+      function getObject(obj) {
+      var theObj;
+      if (document.all) {
+        if (typeof obj=='string') {
+          return document.all(obj);
+        } else {
+          return obj.style;
+        }
+      }
+      if (document.getElementById) {
+      if (typeof obj=='string') {
+        return document.getElementById(obj);
+      } else {
+        return obj.style;
+      }
+    }
+    return null;
+  }
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  function getJson() {
+    $.ajaxSetup({ cache: false });
+    $.get("/test",{ cmd: $("#inputCmd").val() }, 
+
+      function(data){ 
+        //$("#spnCode").append(data);
+        $( data ).insertAfter( "#headline" );  
+      }).error(function(jqXHR, textStatus, errorThrown){
+        $("<div>error occurred! </div>").insertAfter( "#headline" );
+      });
+  }
+</script>
+}
