@@ -70,8 +70,8 @@
     $.get("/test",{ cmd: $("#inputCmd").val() }, 
 
       function(data){ 
-        //$("#spnCode").append(data);
-        $( data ).insertAfter( "#headline" );  
+        $("#spnCode").append(data);
+        //$( data ).insertAfter( "#headline" );  
       }).error(function(jqXHR, textStatus, errorThrown){
         $("<div>error occurred! </div>").insertAfter( "#headline" );
       });

@@ -16,13 +16,13 @@ object Application extends Controller {
   	//Ok("Got result: " + Parser.parse(2,cmd))
   	val list = Parser.parse(2,cmd);
     //http://stackoverflow.com/questions/1094173/how-do-i-get-around-type-erasure-on-scala-or-why-cant-i-get-the-type-paramete
-  	/*
+  	
     list match {
         case l:List[Account @unchecked] => Ok(views.html.block(l));
         case _ => Ok("nothing");
     }
-    */
-    Ok("nothing");
+    
+    //Ok("nothing");
   }
   
   def feed(url: String) = Action {
